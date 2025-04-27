@@ -16,12 +16,35 @@ Else
  
 Program:
 
-//type your code here
+#include <stdio.h>
+
+struct vaccine {
+    int age;
+    char name[20];
+} e;
+
+int main() {
+    printf("Enter age and name: ");
+    scanf("%d %s", &e.age, e.name);
+    printf("Age: %d\n", e.age);
+    printf("Name: %s\n", e.name);
+    if (e.age <= 6) {
+        printf("Eligibility: No\n");
+    } else {
+        printf("Eligibility: Yes\n");
+    }
+    return 0;
+}
+
 
 
 Output:
 
-//paste your output here
+Enter age and name: 17
+hariz
+Age: 17
+Name: hariz
+Eligibility: Yes
 
 
 Result:
@@ -44,16 +67,35 @@ Algorithm:
  
 Program:
 
-//type your code here
+#include <stdio.h>
+struct Numbers
+{
+    int a, b;
+};
+struct Numbers processNumbers(struct Numbers num) 
+{
+    struct Numbers result;
+    result.a = num.a + num.b;
+    return result;
+}
+int main()
+{
+    struct Numbers num, result;
+    scanf("%d %d", &num.a, &num.b);
+    result = processNumbers(num);
+    printf("Sum = %d\n", result.a);
+    return 0;
+}
+
 
 
 
 
 Output:
 
-
-//paste your output here
-
+7
+9
+Sum = 16
 
 
 
@@ -86,23 +128,34 @@ Use scanf to input the file name into the name array.
  
 Program:
 
-//type your code here
-
+#include <stdio.h>
+int main()
+{
+    char filename[50];
+    FILE *p;
+    scanf("%s",filename);
+    p=fopen(filename,"w");
+    if(p==NULL)
+    {
+        printf("Error in creating the file!\n");
+        return 1;
+    }
+    printf("%s File Created Successfully\n",filename);
+    printf("%s File Opened\n",filename);
+    fclose(p);
+    printf("%s File Closed\n",filename);
+    return 0;
+}
 
 
 
 Output:
 
 
-//paste your output here
-
-
-
-
-
-
-
-
+rawee.html
+rawee.html File Created Successfully
+rawee.html File Opened
+rawee.html File Closed
 
 
 
@@ -133,18 +186,43 @@ Use scanf to input the file name into the name array and the number of strings i
  
 Program:
 
-//type your code here
+#include <stdio.h>
+int main() 
+{
+    char filename[100],text[100];
+    int n;
+    FILE *p;
+    scanf("%s", filename);
+    p = fopen(filename, "w");
+    if (p == NULL) 
+    {
+        printf("Error in creating the file!\n");
+        return 1;
+    }
+    printf("%s Opened\n", filename);
+    scanf("%d", &n);
+    getchar(); 
+    for (int i = 0; i < n; i++) 
+    {
+        fgets(text, sizeof(text), stdin);
+        fputs(text, p);
+    }
+    printf("Data added Successfully\n");
+    fclose(p);
+    return 0;
+}
 
 
 
 
 Output:
 
-
-//paste your output here
-
-
-
+sample.txt
+sample.txt Opened
+2
+aaa
+bbb
+Data added Successfully
 
 
 
@@ -187,15 +265,48 @@ Algorithm:
 
 Program:
 
-//type your code here
 
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct
+{
+    char subject[50];
+    int marks;
+}student;
+int main()
+{
+    int n,i;
+    scanf("%d",&n);
+    student *subjects=(student *)malloc(n *sizeof(student));
+    if(subjects==NULL)
+    {
+        printf("Memory allocation failed");
+        return 1;
+    }
+    for(i=0;i<n;i++)
+    {
+        scanf("%s %d",subjects[i].subject,&subjects[i].marks);
+    }
+    for(i=0;i<n;i++)
+    {
+        printf("%s  %d\n",subjects[i].subject,subjects[i].marks);
+    }
+    free(subjects);
+    return 0;
+}
 
 
 
 Output:
 
+2
+science
+96
+mathematics
+95
+science  96
+mathematics  95
 
-//paste your output here
 
 
 
